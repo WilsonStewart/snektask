@@ -51,4 +51,4 @@ tests = ["tests", "*/snektask/tests"]
 exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]
 
 [project.scripts]
-calculator = "snektask.entry_points:snektask"
+snektask = "snektask.snektask:snektask"

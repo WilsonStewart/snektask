@@ -1,0 +1,11 @@
+Screen {
+    layout: grid;
+    grid-size: 1 2;
+    grid-rows: 3 100%;
+}
+
+.column-heading {
+    height: 100%;
+    border: solid red;
+    text-align: center
+}
