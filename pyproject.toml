@@ -1,0 +1,54 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "snektask"
+dynamic = ["version"]
+description = ''
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = []
+authors = [{ name = "Wilson Stewart", email = "wilson@bellbellbell.com" }]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = ["textual~=2.1.2"]
+
+[project.urls]
+Documentation = "https://github.com/Wilson Stewart/snektask#readme"
+Issues = "https://github.com/Wilson Stewart/snektask/issues"
+Source = "https://github.com/Wilson Stewart/snektask"
+
+[tool.hatch.version]
+path = "src/snektask/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = ["mypy>=1.0.0"]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/snektask tests}"
+
+[tool.coverage.run]
+source_pkgs = ["snektask", "tests"]
+branch = true
+parallel = true
+omit = ["src/snektask/__about__.py"]
+
+[tool.coverage.paths]
+snektask = ["src/snektask", "*/snektask/src/snektask"]
+tests = ["tests", "*/snektask/tests"]
+
+[tool.coverage.report]
+exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]
+
+[project.scripts]
+calculator = "snektask.entry_points:snektask"
